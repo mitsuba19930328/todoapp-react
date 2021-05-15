@@ -5,7 +5,8 @@ class Blog extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            isPublished: false
+            isPublished: false,
+            isGood: false
         }
     }
 
@@ -17,6 +18,8 @@ class Blog extends React.Component{
                     title = {'Reactの使い方'}
                     isPublished = {this.state.isPublished}
                     toggle={() => this.togglePublished()}
+                    isGood = {this.state.isGood}
+                    toggleGood={() => {this.toggleGood()}}                    
                 />
             </>
         )
@@ -26,6 +29,13 @@ class Blog extends React.Component{
     togglePublished = () =>{
         this.setState({
             isPublished: !this.state.isPublished
+        })
+    };
+
+    // いいね状態を反転させる関数メソッド
+    toggleGood = () =>{
+        this.setState({
+            isGood: !this.state.isGood
         })
     };
 }
