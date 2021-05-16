@@ -6,8 +6,25 @@ class Blog extends React.Component{
         super(props);
         this.state = {
             isPublished: false,
-            isGood: false
+            count: 0
         }
+    }
+
+    componentDidMount() {
+        // ボタンがクリックされたらいいねを行う
+        document.getElementById('counter').addEventListener('click', this.countUp)
+    }
+
+    componentDidUpdate() {
+        if(this.state.count >= 10){
+            this.setState({
+                count: 0
+            })
+        }
+    }
+
+    componentWillUnmount() {
+        document.getElementById('counter').removeEventListener('click', this.countUp)
     }
 
     render(){
@@ -18,8 +35,8 @@ class Blog extends React.Component{
                     title = {'Reactの使い方'}
                     isPublished = {this.state.isPublished}
                     toggle={() => this.togglePublished()}
-                    isGood = {this.state.isGood}
-                    toggleGood={() => {this.toggleGood()}}                    
+                    count = {this.state.count}
+                    toggleLike = {() => this.countUp()}
                 />
             </>
         )
@@ -32,13 +49,13 @@ class Blog extends React.Component{
         })
     };
 
-    // いいね状態を反転させる関数メソッド
-    toggleGood = () =>{
+    // 公開状態を反転させる関数メソッド
+    countUp = () =>{
         this.setState({
-            isGood: !this.state.isGood
+            count: this.state.count + 1
         })
     };
 }
 
 
-export default Blog
+export default Blog;
