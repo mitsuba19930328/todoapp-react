@@ -1,15 +1,19 @@
-// import React from 'react';
-// import Article from "./Article";
-//
-// const Todo = () =>{
-//
-//     return(
-//         <>
-//             < TodoHeader
-//                 title = {'React-Todo'}
-//             />
-//         </>
-//     )
-// }
-//
-// export default Todo;
+import React from 'react';
+import TodoHeader from "./components/TodoHeader";
+import TodoBody from "./components/TodoBody";
+
+const Todo = () =>{
+
+    return(
+        <>
+            < TodoHeader
+                title = {'React-Todo'}
+            />
+
+            < TodoBody />
+
+        </>
+    );
+}
+
+export default Todo;
